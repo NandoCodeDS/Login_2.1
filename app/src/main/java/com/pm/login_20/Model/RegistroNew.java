@@ -1,11 +1,13 @@
-package com.pm.login_20;
+package com.pm.login_20.Model;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ValidateAccount extends AppCompatActivity {
+import com.pm.login_20.R;
+
+public class RegistroNew extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
