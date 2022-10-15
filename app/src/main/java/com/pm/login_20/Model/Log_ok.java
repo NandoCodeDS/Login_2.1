@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pm.login_20.R;
 
 
-public class Logueado extends AppCompatActivity {
+public class Log_ok extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

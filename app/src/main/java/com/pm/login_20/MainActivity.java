@@ -24,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "Bienvenidos a Sci High";
     ProductoAPI productoAPI;
     List<LogPersona> logPersonas;
+    private String emailAdd;
 
     private static final String TAG = "MainActivity";
-    private static final String TAG2 = "Logueado";
+    private static final String TAG2 = "Log_ok";
 
     private EditText email;
     private EditText password;
@@ -124,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 logPersonas=response.body();
-                final String[] EmailAddress = new String[1];
+
                 logPersonas.forEach(p -> {
                     int i = Log.i("Prods: ", p.getEmail().toString());
-                    EmailAddress[0]=p.getEmail();
+                    emailAdd=p.getEmail();
                 });
 
-                Log.i("prueba",EmailAddress[0]);
+                Log.i("prueba",emailAdd);
 
             }
 
@@ -142,20 +143,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    /*public void GET_UserById(View view) {
-        Call<Login> loginCall = apiLogin.getLoginOne(3);
-        loginCall.enqueue(new Callback<Login>() {
-            @Override
-            public void onResponse(Call<Login> call, Response<Login> response) {
-                Log.e(TAG, "on response: "+response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Login> call, Throwable t) {
-                Log.e(TAG,"on failure: "+t.getLocalizedMessage());
-            }
-        });
-    }*/
 }

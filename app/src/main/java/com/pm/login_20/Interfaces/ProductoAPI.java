@@ -12,9 +12,9 @@ public interface ProductoAPI {
     @GET("/login/{email}")
     Call<List<LogPersona>> getOne(@Path("email")String email);
 
-    @GET("login")
+    @GET("/login/")
     Call<List<LogPersona>>getAll();
 
-    @POST("/guardar")
+    @POST("/login/")
     Call<LogPersona> addEmpleado(@Body LogPersona logPersona);
 }
