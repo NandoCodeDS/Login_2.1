@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         drawerLayout =findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -123,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
-
-        //
 
         btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void getAll(){
         Retrofit retrofit=new Retrofit.Builder()
