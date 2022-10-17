@@ -14,7 +14,7 @@ public class Log_inV extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_ok);
+        setContentView(R.layout.activity_login_view);
     }
 
     public void Cerrar_Sesion(View view) {

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -18,8 +19,13 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.pm.login_20.Interfaces.ProductoAPI;
+import com.pm.login_20.Model.About;
+import com.pm.login_20.Model.Contact;
+import com.pm.login_20.Model.Gallery;
+import com.pm.login_20.Model.Home;
 import com.pm.login_20.Model.LogPersona;
 import com.pm.login_20.Model.Log_inV;
+import com.pm.login_20.Model.Rate;
 import com.pm.login_20.Utils.Constants;
 import java.util.List;
 import retrofit2.Call;
@@ -46,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(drawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -61,34 +75,50 @@ public class MainActivity extends AppCompatActivity {
                 switch(item.getItemId()){
                     case R.id.home:{
                         Toast.makeText(MainActivity.this, "Inicio Seleccionado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Home.class);
+                        startActivity(intent);
+                        break;
                     }
                     case R.id.contact:{
                         Toast.makeText(MainActivity.this, "Contacto Seleccionado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Contact.class);
+                        startActivity(intent);
+                        break;
                     }
                     case R.id.gallery:{
                         Toast.makeText(MainActivity.this, "Galería de imagenes Seleccionada", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Gallery.class);
+                        startActivity(intent);
+                        break;
                     }
                     case R.id.acerca_de:{
                         Toast.makeText(MainActivity.this, "Información de la APP Seleccionada", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, About.class);
+                        startActivity(intent);
+                        break;
                     }
                     case R.id.log_in_ic:{
                         Toast.makeText(MainActivity.this, "Inicio de sesión Seleccionado", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, Log_inV.class);
                         startActivity(intent);
+                        break;
                     }
                     case R.id.share:{
                         Toast.makeText(MainActivity.this, "Compartir Seleccionado", Toast.LENGTH_SHORT).show();
+                        break;
                     }
                     case R.id.rate_usc:{
                         Toast.makeText(MainActivity.this, "Calificación Seleccionado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Rate.class);
+                        startActivity(intent);
+                        break;
                     }
-
                 }
                 return false;
             }
         });
 
-        setContentView(R.layout.activity_main);
+        /*setContentView(R.layout.activity_main);
         Button btnLog = findViewById(R.id.btn_login);
 
         email = findViewById(R.id.editTextTextEmailAddress);
@@ -104,9 +134,18 @@ public class MainActivity extends AppCompatActivity {
                 //getOne(varCorreo);
                 getAll();
             }
-        });
+        });*/
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+
+    }
     /*public void GET_UserById(View view) {
         Call<List<LogPersona>> loginCall = apiLogin.getLogin();
         loginCall.enqueue(new Callback<List<LogPersona>>() {
