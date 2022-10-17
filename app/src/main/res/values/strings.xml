@@ -8,4 +8,6 @@
     <string name="new_reg_conf_password">Confirm Password</string>
     <string name="todo">TODO</string>
     <string name="bienvenidos">Bienvenidos</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
 </resources>

@@ -16,5 +16,33 @@
             android:icon="@drawable/image_"
             android:title="Galeria" />
     </group>
+    <item android:title="Perfil">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/acerca_de"
+                    android:icon="@drawable/account_circle_"
+                    android:title="Acerca de la APP" />
+                <item
+                    android:id="@+id/log_in_ic"
+                    android:icon="@drawable/log_in"
+                    android:title="Log In" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Comunicacion">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/share"
+                    android:icon="@drawable/share"
+                    android:title="Compartir" />
+                <item
+                    android:id="@+id/rate_usc"
+                    android:icon="@drawable/sentiment_very_satisfied"
+                    android:title="Calificanos" />
+            </group>
+        </menu>
+    </item>
 
 </menu>

@@ -1,16 +1,25 @@
 package com.pm.login_20;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 import com.pm.login_20.Interfaces.ProductoAPI;
 import com.pm.login_20.Model.LogPersona;
+import com.pm.login_20.Model.Log_inV;
 import com.pm.login_20.Utils.Constants;
 import java.util.List;
 import retrofit2.Call;
@@ -21,6 +30,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity {
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    ActionBarDrawerToggle drawerToggle;
+
     public static final String EXTRA_MESSAGE = "Bienvenidos a Sci High";
     ProductoAPI productoAPI;
     List<LogPersona> logPersonas;
@@ -35,6 +48,45 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        drawerLayout =findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener((drawerToggle));
+        drawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.home:{
+                        Toast.makeText(MainActivity.this, "Inicio Seleccionado", Toast.LENGTH_SHORT).show();
+                    }
+                    case R.id.contact:{
+                        Toast.makeText(MainActivity.this, "Contacto Seleccionado", Toast.LENGTH_SHORT).show();
+                    }
+                    case R.id.gallery:{
+                        Toast.makeText(MainActivity.this, "Galería de imagenes Seleccionada", Toast.LENGTH_SHORT).show();
+                    }
+                    case R.id.acerca_de:{
+                        Toast.makeText(MainActivity.this, "Información de la APP Seleccionada", Toast.LENGTH_SHORT).show();
+                    }
+                    case R.id.log_in_ic:{
+                        Toast.makeText(MainActivity.this, "Inicio de sesión Seleccionado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Log_inV.class);
+                        startActivity(intent);
+                    }
+                    case R.id.share:{
+                        Toast.makeText(MainActivity.this, "Compartir Seleccionado", Toast.LENGTH_SHORT).show();
+                    }
+                    case R.id.rate_usc:{
+                        Toast.makeText(MainActivity.this, "Calificación Seleccionado", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                return false;
+            }
+        });
 
         setContentView(R.layout.activity_main);
         Button btnLog = findViewById(R.id.btn_login);
